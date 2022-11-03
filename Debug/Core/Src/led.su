@@ -1,0 +1,7 @@
+../Core/Src/led.c:12:6:turn_off_all_singleLed	4	static
+../Core/Src/led.c:16:6:reset_7SEG1	4	static
+../Core/Src/led.c:20:6:reset_7SEG2	4	static
+../Core/Src/led.c:24:6:display_7SEG1	16	static
+../Core/Src/led.c:63:6:display_7SEG2	16	static
+../Core/Src/led.c:102:6:turn_off_all_7seg	4	static
+../Core/Src/led.c:106:6:turn_on_7seg	24	static
