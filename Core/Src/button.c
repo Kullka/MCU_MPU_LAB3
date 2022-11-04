@@ -12,10 +12,7 @@
 #include "led.h"
 #include "fsm.h"
 
-#define NO_BUTTONS 			3
-#define TIME_INCREASE_VALUE 50
-#define TIME_CHANGE_TO_AUTO 100
-
+int button[NO_BUTTONS] = {0x1<<13, 0x1<<14, 0x1<<15};
 int keyReg0[NO_BUTTONS];
 int keyReg1[NO_BUTTONS];
 int keyReg2[NO_BUTTONS];
@@ -40,6 +37,9 @@ void key1Process() {
 		break;
 	case MODE_GREEN:
 		status = STATE0;
+		value0 = durationRed;
+		value1 = durationGreen;
+		side = 0;
 		set_timer(DURATION);
 		break;
 	default:
@@ -81,18 +81,19 @@ void getKeyInput() {
 	for (int i=0; i<NO_BUTTONS; i++) {
 		keyReg0[i] = keyReg1[i];
 		keyReg1[i] = keyReg2[i];
-		switch (i) {
-		case 0:
-			keyReg2[i] = HAL_GPIO_ReadPin(BUTTON1_GPIO_Port, BUTTON1_Pin);
-			break;
-		case 1:
-			keyReg2[i] = HAL_GPIO_ReadPin(BUTTON2_GPIO_Port, BUTTON2_Pin);
-			break;
-		case 2:
-			keyReg2[i] = HAL_GPIO_ReadPin(BUTTON3_GPIO_Port, BUTTON3_Pin);
-		default:
-			break;
-		}
+//		switch (i) {
+//		case 0:
+//			keyReg2[i] = HAL_GPIO_ReadPin(BUTTON1_GPIO_Port, BUTTON1_Pin);
+//			break;
+//		case 1:
+//			keyReg2[i] = HAL_GPIO_ReadPin(BUTTON2_GPIO_Port, BUTTON2_Pin);
+//			break;
+//		case 2:
+//			keyReg2[i] = HAL_GPIO_ReadPin(BUTTON3_GPIO_Port, BUTTON3_Pin);
+//		default:
+//			break;
+//		}
+		keyReg2[i] = HAL_GPIO_ReadPin(GPIOA, button[i]);
 		if ( (keyReg0[i]==keyReg1[i]) && (keyReg1[i]==keyReg2[i]) ) {
 			if (keyReg3[i]!=keyReg2[i]) {
 				keyReg3[i] = keyReg2[i];

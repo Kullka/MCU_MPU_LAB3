@@ -25,10 +25,10 @@ void display_7SEG1(int number) {
 	reset_7SEG1();
 		switch(number) {
 			case 0:
-				GPIOB->ODR &= ~0x7E; // 0 = 0b1111110, but in order to turn on we need to get inverse this binary number
+				GPIOB->ODR &= ~0x3F; // 0 = 0b1111110, but in order to turn on we need to get inverse this binary number
 				break ;
 			case 1:
-				GPIOB->ODR &= ~0x30; // similarly
+				GPIOB->ODR &= ~0x06; // similarly
 				break ;
 			case 2:
 				GPIOB->ODR &= ~0x5B; // similarly

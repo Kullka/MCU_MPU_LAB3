@@ -1,4 +1,4 @@
-../Core/Src/button.c:25:6:key1Process	8	static
+../Core/Src/button.c:22:6:key1Process	8	static
 ../Core/Src/button.c:54:6:key2Process	8	static
 ../Core/Src/button.c:70:6:key3Process	4	static
 ../Core/Src/button.c:80:6:getKeyInput	16	static
